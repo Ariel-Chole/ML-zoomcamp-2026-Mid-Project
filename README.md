@@ -331,7 +331,7 @@ Server: PythonAnywhere
 
 Note: The above responce is just for your reference.
 
-To send a prediction request to my pythonanywhere web, you need to be in the folder where `person.json` (already includes in my project folder) exists and run the following commands:
+To send a prediction request to my `Python Anywhere web`, you need to be in the folder where `person.json` (already includes in my project folder) exists and run the following commands:
 ```bash
 HOST=arielchole01.pythonanywhere.com
 curl -i -X POST "https://${HOST}/life_expectancy" -H "Content-Type: application/json" -d @person.json
