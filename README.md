@@ -306,7 +306,9 @@ Just Run the `test.ipynb` as you like.
 ## 9. Cloud Deployment
 
 I use `Python Anywhere` for `Cloud Deployment`. 
+
 ![alt text](<Screenshot (1163).png>)
+
 As in the image, I created `PythonAnywhere Free account` (one web app at one username) and deployed my Flask App. 
 
 To test my web health, you can run the following commands in your Ubuntu,
@@ -352,6 +354,7 @@ Note: The above responce is just for your reference.
 ### Edition in life_expectancy_predict.py
 
 To run smoothy my pythonanywhere web, I add some lines of code to my life_expectancy_predict.py as in the following screenshot. 
+
 ![alt text](<Screenshot (1164).png>)
 
 ## 10. Learning in Public (14 public learning links)
