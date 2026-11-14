@@ -382,6 +382,7 @@ The following video and websites are also read to build this project and to unde
 8. https://youtu.be/4jRBRDbJemM?si=H6w0uUrcOOgzaWhL
 9. https://youtu.be/GrJP9FLV3FE?si=GAe-nPobCgGgkpp8
 10. https://youtu.be/FgakZw6K1QQ?si=6hepjTBzdzvZkaMN
+11. https://youtu.be/UhY5vPfQIrA?si=1lBwViIy98pWO_4H
 ## 11. Time & Effort
 
 I spend more than 30 hours on this project. 
