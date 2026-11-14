@@ -306,10 +306,79 @@ Just Run the `test.ipynb` as you like.
 ## 9. Cloud Deployment
 
 I use Python Anywhere for Cloud Deployment. 
+![alt text](<Screenshot (1163).png>)
+As in the image, I created PythonAnywhere Free account (one web app at one username) and deployed my Flask App. 
+
+To test my web health, you can run the following commands in your Ubuntu,
+```bash
+HOST=arielchole01.pythonanywhere.com
+curl -i "https://${HOST}/health"
+```
+### Example Response
+
+root@DESKTOP-NT7NSQP:/mnt/c/Users/User/Documents/GitHub/mid_project# curl -i "https://${HOST}/health"
+HTTP/1.1 200 OK
+Date: Sat, 14 Nov 2026 05:49:58 GMT
+Content-Type: application/json
+Content-Length: 21
+Connection: keep-alive
+X-Clacks-Overhead: GNU Terry Pratchett
+Server: PythonAnywhere
+
+{"status":"healthy"}
+
+Note: The above responce is just for your reference.
+
+To send a prediction request to my pythonanywhere web: you need to be in the folder where `person.json` (already includes in my project folder) exists and run the following commands:
+```bash
+HOST=arielchole01.pythonanywhere.com
+curl -i -X POST "https://${HOST}/life_expectancy" -H "Content-Type: application/json" -d @person.json
+```
+### Example Response
+
+root@DESKTOP-NT7NSQP:/mnt/c/Users/User/Documents/GitHub/mid_project# curl -i -X POST "https://${HOST}/life_expectancy" -H "Content-Type: application/json" -d @person.json
+HTTP/1.1 200 OK
+Date: Sat, 14 Nov 2026 05:49:38 GMT
+Content-Type: application/json
+Content-Length: 48
+Connection: keep-alive
+X-Clacks-Overhead: GNU Terry Pratchett
+Server: PythonAnywhere
+
+{"Predicted Life_expectancy":58.63539505004883}
+
+Note: The above responce is just for your reference.
+
+### Edition in life_expectancy_predict.py
+
+To run smoothy my pythonanywhere web, I add some lines of code to my life_expectancy_predict.py as in the following screenshot. 
+![alt text](<Screenshot (1164).png>)
 
 ## 10. Learning in Public (14 public learning links)
 
+1. I am absolute beginner to Docker, Flask, uv and Cloud Deployment. 
 
+Therefore, I watched this 7:30 hours long video for Docker and I gained a sense of what Docker image, container, and network are. I understand the usage of tag and Commands in Docker and now I quite understand how to write a Docker File. 
+link: https://www.youtube.com/watch?v=rjjES5IsPdg&t=22526s
+
+I also watched this 1:30 hours long Flask tutorial video and this video also provides how to deploy a web in Python Anywhere at the end. This video also shows the other way of buildng requirement.txt file for venv.
+link: https://www.youtube.com/watch?v=45P3xQPaYxc&t=4758s
+
+I watched this short video for uv to build virtual environment. Even it is short, it is enough to gain quick understanding of uv. 
+link: https://youtu.be/5rTwOt9Qgik?si=PIc7fSQSE3awxt58
+
+The following video and websites are also read to build this project and to understand about ML algorithms. 
+
+1. https://scikit-learn.org/stable/modules/cross_validation.html
+2. https://medium.com/pythoneers/from-bagging-to-xgboost-5c3db6babcfe
+3. https://www.geeksforgeeks.org/python/introduction-to-fastapi/
+4. https://www.fortinet.com/uk/resources/cyberglossary/api-key
+5. https://www.youtube.com/watch?v=z7dYIKm4np8
+6. https://youtu.be/n4WaEiCELlg?si=hIksHJU1iajkV9g4
+7. https://youtu.be/fSytzGwwBVw?si=ewyANWtHdv6W2uTk
+8. https://youtu.be/4jRBRDbJemM?si=H6w0uUrcOOgzaWhL
+9. https://youtu.be/GrJP9FLV3FE?si=GAe-nPobCgGgkpp8
+10. https://youtu.be/FgakZw6K1QQ?si=6hepjTBzdzvZkaMN
 ## 11. Time & Effort
 
 I spend more than 30 hours on this project. 

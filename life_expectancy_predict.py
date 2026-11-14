@@ -19,7 +19,7 @@ dv = pipeline["dv"]
 @app.route('/life_expectancy', methods = ['POST'])
 def predict():
     data = request.get_json()
-    data_train = dv.transform(data)
+    data_train = dv.transform([data])
     ddata = xgb.DMatrix(data_train,feature_names=list(dv.get_feature_names_out()))
     predictions = model.predict(ddata)
     result = {
