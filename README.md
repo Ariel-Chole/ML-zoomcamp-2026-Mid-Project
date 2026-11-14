@@ -305,9 +305,9 @@ Just Run the `test.ipynb` as you like.
 
 ## 9. Cloud Deployment
 
-I use Python Anywhere for Cloud Deployment. 
+I use `Python Anywhere` for `Cloud Deployment`. 
 ![alt text](<Screenshot (1163).png>)
-As in the image, I created PythonAnywhere Free account (one web app at one username) and deployed my Flask App. 
+As in the image, I created `PythonAnywhere Free account` (one web app at one username) and deployed my Flask App. 
 
 To test my web health, you can run the following commands in your Ubuntu,
 ```bash
