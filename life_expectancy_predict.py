@@ -26,6 +26,9 @@ def predict():
         "Predicted Life_expectancy": float(predictions[0])
     }
     return jsonify(result)
+@app.route('/health',methods=["GET"])
+def health():
+    return {"status": "healthy"}
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port = 9696)
+    app.run(debug=True, host="localhost", port = 9696)

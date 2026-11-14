@@ -1,6 +1,6 @@
 import requests
 
-url = url = "http://localhost:9696/life_expectancy"
+url = "http://localhost:9696/life_expectancy"
 
 sample_data = {
     "country": "Eritrea",
@@ -26,6 +26,5 @@ sample_data = {
     "schooling": 4.7
 }
 
-response = requests.post(url, json=sample_data)
-print("Status Code:", response.status_code)
-print("Response:", response.json())
+result = requests.post(url, json=sample_data).json()
+print(result)

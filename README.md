@@ -2,9 +2,9 @@
 
 A machine-learning regression project that predicts a country's life
 expectancy (in years) from country-level demographic, health, and
-economic indicators. The project covers exploratory data analysis, data
-preparation, model comparison, training, prediction, and Docker-based
-execution.
+economic indicators. The project covers EDA, data preparation, 
+model comparison, training, prediction, and Docker-based
+packaging.
 
 ## 1. Problem Statement
 
@@ -47,7 +47,7 @@ mortality, infant and under-five deaths, alcohol consumption, healthcare
 expenditure, vaccination coverage, measles, BMI, HIV/AIDS, GDP,
 population, thinness, income composition of resources, and schooling.
 
-The dataset is already provided in the project file but you should inspect the original file for any updates.
+The dataset is already provided in the project file but you should inspect the original file for any updates and terms.
 
 ## 3. Exploratory Data Analysis and Data Preparation
 
@@ -152,8 +152,8 @@ folder:
 
 ``` text
 mid_project/
-├── .venv/                         # Local Python virtual environment
-├── .vscode/                       # VS Code settings
+├── .venv/                          # Local Python virtual environment
+├── .vscode/                        # VS Code settings
 ├── src/                            # Application source code
 ├── .python-version                 # Proper Python version 
 ├── Dockerfile                      # Dockerfile to build image and container
@@ -170,7 +170,7 @@ mid_project/
 └── uv.lock                         # Locked dependency versions
 ```
 
-The `.venv/` directory is a local environment and should generally not
+The `.venv/` directory is a local environment and will generally not
 be committed to Git. The `src/` directory contains application code used
 by the project.
 
@@ -182,9 +182,8 @@ The project uses `uv` for Python dependency management through
 Make sure Python and `uv` are installed.
 
 ### Install dependencies
-*** Notice: *** You don't need to re-train the model and install packages manually. You can just straight up to Docker and Docker will help build all necessary files. Then, you can use my model.
 
-Run the following commands from the project root:
+Run the following commands to create virtual environment and install required dependencies:
 
 ``` bash
 uv sync --locked
@@ -196,6 +195,8 @@ project configuration.
 
 ### Train the model
 
+**Notice:** You don't need to re-train the model.
+
 The project includes `life_expectancy_train.py` for the
 training workflow. Run the project training entry point:
 
@@ -204,8 +205,7 @@ uv run python life_expectancy_train.py
 ```
 
 The training workflow uses the project dataset and produces the saved
-model artifact used for prediction. The model artifact visible in the
-project folder is `life-expectancy-model.bin`.
+model artifact used for prediction. The model artifact `life-expectancy-model.bin` already exists in the project folder.
 
 ### Generate a prediction
 
@@ -217,10 +217,9 @@ uv run python life_expectancy_predict.py
 
 The prediction script loads the saved model and generates a prediction
 using the input data configured by the project. `person.json` is
-included as a JSON input/example file.
+included as a JSON sample data for testing.
 
-7. Web Service
-*** Notice: *** You don't need to re-train the model and install packages manually. You can just straight up to Docker and Docker will help build all necessary files. Then, you can use my model.
+## 7. Web Service
 
 The project uses Flask to provide a web service for life expectancy prediction. The application loads the trained XGBoost model and the fitted DictVectorizer from the saved model pipeline (life-expectancy-model.bin).
 
@@ -232,9 +231,22 @@ Endpoint: /life_expectancy
 
 Purpose: Receives input data in JSON format and returns the predicted life expectancy.
 
-Making a Prediction
+### Making a Prediction
 
-First, make sure the Flask application is running. You can send a prediction request using the following command:
+First, make sure the Flask application is running. To run the Flask application:
+```bash
+python3 life_expectancy_predict.py
+gunicorn --bind=0.0.0.0:9696 life_expectancy_predict:app
+```
+
+Open another terminal and you can check the app health using the following commands:
+```bash 
+curl localhost:9696/health
+or 
+curl 0.0.0.0:9696/health
+```
+
+You can send a prediction request using the following command:
 
 ``` bash
 curl -X POST http://localhost:9696/life_expectancy \
@@ -244,7 +256,7 @@ curl -X POST http://localhost:9696/life_expectancy \
 
 The person.json file contains the input features required by the model. The request should follow the JSON structure expected by the application's preprocessing pipeline.
 
-Example Response
+### Example Response
 
 {
   "Predicted Life_expectancy": 58.6354
@@ -269,76 +281,42 @@ tag:
 docker build -t mid_project:2026_mid .
 ```
 
-Run the container and map port `9696`:
+Run the container and publish port `9696`:
 
 ``` bash
 docker run --rm -p 9696:9696 mid_project:2026_mid
 ```
 
-The `--rm` option removes the container after it stops. The port mapping
+The `--rm` option removes the container as soon as it stops. The port mapping
 makes the service available through port `9696` on the host machine.
 
 You can then send a prediction request to:
 
 ``` text
-http://localhost:9696/predict
+http://localhost:9696//life_expectancy
 ```
-The project also includes `test.py` and `test.ipynb` for Docker-related testing.
+The project also includes `test.py` and `test.ipynb` for testing.
 After building the container, open another terminal and run 
 ``` bash
 python3 test.py
 ``` 
 OR 
-Just Run the test.ipynb as you like.
+Just Run the `test.ipynb` as you like.
 
-The project also includes `test_docker.py` for Docker-related testing.
+## 9. Cloud Deployment
 
-## 9. Limitations and Future Improvements
+I use Python Anywhere for Cloud Deployment. 
 
--   The model is trained on historical country-level observations.
-    Changes in healthcare, economic conditions, and living standards may
-    affect predictions on newer data.
--   Filling missing values with zero performed slightly better than mean
-    filling in the notebook's baseline comparison, but zero may not be
-    appropriate for every feature.
--   Data quality and reporting practices may differ between countries
-    and years.
--   The model identifies patterns in the available data; correlations
-    should not be interpreted as causal relationships.
--   Further evaluation on more recent data and testing alternative
-    imputation methods may improve the reliability of the model.
--   Cloud deployment is a possible future extension. It is not described
-    as completed in this project documentation.
+## 10. Learning in Public (14 public learning links)
 
-## 10. Reproducibility and Submission Checklist
 
-Before submitting the project:
+## 11. Time & Effort
 
--   [ ] Problem statement, target variable, and evaluation metric are
-    clearly explained.
--   [ ] Dataset source is linked and the dataset license/terms have been
-    checked.
--   [ ] Dataset preparation and missing-value handling are documented.
--   [ ] EDA findings and relevant feature relationships are explained.
--   [ ] At least three models are compared.
--   [ ] Hyperparameter tuning and model selection are documented.
--   [ ] Cross-validation and held-out test results are reported.
--   [ ] Training and prediction scripts run successfully.
--   [ ] Required model artifact is available.
--   [ ] Web service health-check and prediction endpoints work.
--   [ ] Docker image builds and the container runs successfully.
--   [ ] README installation, training, prediction, API, and Docker
-    instructions have been tested.
--   [ ] The project has been tested from a fresh Git clone.
--   [ ] The exact Git commit hash for submission is recorded.
--   [ ] At least three peer reviews are completed, as required by the
-    project guidelines.
--   [ ] Public learning links are added to the submission form if
-    available (up to 14 are allowed).
+I spend more than 30 hours on this project. 
 
-## 11. Acknowledgement
-
-This project was developed as a machine-learning regression exercise
-using the Life Expectancy (WHO) dataset from Kaggle. It applies data
-exploration, preprocessing, regression modeling, hyperparameter tuning,
-model evaluation, prediction, and Docker-based packaging.
+* About 3 hours searching the dataset
+* About 5 hours EDA and data preparation
+* About 15 hours Model Building and parameter tunling 
+* About 3 hours Flask app building
+* About 2 hours Docker packaging
+* About 2 hours Cloud Deployment
