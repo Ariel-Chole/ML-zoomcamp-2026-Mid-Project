@@ -331,7 +331,7 @@ Server: PythonAnywhere
 
 Note: The above responce is just for your reference.
 
-To send a prediction request to my pythonanywhere web: you need to be in the folder where `person.json` (already includes in my project folder) exists and run the following commands:
+To send a prediction request to my pythonanywhere web, you need to be in the folder where `person.json` (already includes in my project folder) exists and run the following commands:
 ```bash
 HOST=arielchole01.pythonanywhere.com
 curl -i -X POST "https://${HOST}/life_expectancy" -H "Content-Type: application/json" -d @person.json
@@ -362,13 +362,13 @@ To run smoothy my pythonanywhere web, I add some lines of code to my life_expect
 1. I am absolute beginner to Docker, Flask, uv and Cloud Deployment. 
 
 Therefore, I watched this 7:30 hours long video for Docker and I gained a sense of what Docker image, container, and network are. I understand the usage of tag and Commands in Docker and now I quite understand how to write a Docker File. 
-link: https://www.youtube.com/watch?v=rjjES5IsPdg&t=22526s
+Link: https://www.youtube.com/watch?v=rjjES5IsPdg&t=22526s
 
 I also watched this 1:30 hours long Flask tutorial video and this video also provides how to deploy a web in Python Anywhere at the end. This video also shows the other way of buildng requirement.txt file for venv.
-link: https://www.youtube.com/watch?v=45P3xQPaYxc&t=4758s
+Link: https://www.youtube.com/watch?v=45P3xQPaYxc&t=4758s
 
 I watched this short video for uv to build virtual environment. Even it is short, it is enough to gain quick understanding of uv. 
-link: https://youtu.be/5rTwOt9Qgik?si=PIc7fSQSE3awxt58
+Link: https://youtu.be/5rTwOt9Qgik?si=PIc7fSQSE3awxt58
 
 The following video and websites are also read to build this project and to understand about ML algorithms. 
 
@@ -389,7 +389,7 @@ I spend more than 30 hours on this project.
 
 * About 3 hours searching the dataset
 * About 5 hours EDA and data preparation
-* About 15 hours Model Building and parameter tunling 
+* About 15 hours Model Building and parameter tuning 
 * About 3 hours Flask app building
 * About 2 hours Docker packaging
 * About 2 hours Cloud Deployment
