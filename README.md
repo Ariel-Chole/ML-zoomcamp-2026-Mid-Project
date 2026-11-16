@@ -64,7 +64,7 @@ The notebook includes:
 6.  Encoding categorical variables into numerical features using
     `DictVectorizer`. To use 'DictVectorizer', our samples need to be in Dicts format.
 7.  Examining feature correlations with the target.
-8. Visualize the highest correlations features.
+8.  Visualize the highest correlations features.
 
 ### Missing-value comparison
 
@@ -239,22 +239,20 @@ python3 life_expectancy_predict.py
 gunicorn --bind=0.0.0.0:9696 life_expectancy_predict:app
 ```
 
-Open another terminal and you can check the app health using the following commands:
+Open new terminal and you can check the app health using the following commands:
 ```bash 
 curl localhost:9696/health
 or 
 curl 0.0.0.0:9696/health
 ```
 
-You can send a prediction request using the following command:
+To send a prediction request, run the following command where `person.json` file exists (already exists in my project folder).
 
 ``` bash
 curl -X POST http://localhost:9696/life_expectancy \
   -H "Content-Type: application/json" \
   -d @person.json
 ```
-
-The person.json file contains the input features required by the model. The request should follow the JSON structure expected by the application's preprocessing pipeline.
 
 ### Example Response
 
@@ -301,7 +299,7 @@ After building the container, open another terminal and run
 python3 test.py
 ``` 
 OR 
-Just Run the `test.ipynb` as you like.
+Just Run the `test.ipynb` as you prefer.
 
 ## 9. Cloud Deployment
 
@@ -331,7 +329,7 @@ Server: PythonAnywhere
 
 Note: The above responce is just for your reference.
 
-To send a prediction request to my `Python Anywhere web`, you need to be in the folder where `person.json` (already includes in my project folder) exists and run the following commands:
+To send a prediction request to my `PythonAnywhere web`, you need to be in the folder where `person.json` exists (already exists in my project folder) and run the following commands:
 ```bash
 HOST=arielchole01.pythonanywhere.com
 curl -i -X POST "https://${HOST}/life_expectancy" -H "Content-Type: application/json" -d @person.json
@@ -353,7 +351,7 @@ Note: The above responce is just for your reference.
 
 ### Edition in life_expectancy_predict.py
 
-To run smoothy my pythonanywhere web, I add some lines of code to my life_expectancy_predict.py as in the following screenshot. 
+To run smoothy my PythonAnywhere web, I add some lines of code to my life_expectancy_predict.py as in the following screenshot. 
 
 ![alt text](<Screenshot (1164).png>)
 
