@@ -351,7 +351,7 @@ Note: The above responce is just for your reference.
 
 ### Edition in life_expectancy_predict.py
 
-To run smoothy my PythonAnywhere web, I add some lines of code to my life_expectancy_predict.py as in the following screenshot. 
+To run smoothly my PythonAnywhere web, I add some lines of code to my life_expectancy_predict.py as in the following screenshot. 
 
 ![alt text](<Screenshot (1164).png>)
 
